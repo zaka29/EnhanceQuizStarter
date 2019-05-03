@@ -17,16 +17,16 @@ class ViewController: UIViewController {
     let questionsPerRound = 4
     var questionsAsked = 0
     var correctQuestions = 0
-    var indexOfSelectedQuestion = 0
+//    var indexOfSelectedQuestion = 0
     
     var gameSound: SystemSoundID = 0
     
-    let trivia: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
-        ["Question": "Blue whales are technically whales", "Answer": "True"],
-        ["Question": "Camels are cannibalistic", "Answer": "False"],
-        ["Question": "All ducks are birds", "Answer": "True"]
-    ]
+//    let trivia: [[String : String]] = [
+//        ["Question": "Only female koalas can whistle", "Answer": "False"],
+//        ["Question": "Blue whales are technically whales", "Answer": "True"],
+//        ["Question": "Camels are cannibalistic", "Answer": "False"],
+//        ["Question": "All ducks are birds", "Answer": "True"]
+//    ]
     
     // MARK: - Outlets
     
@@ -56,8 +56,12 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-        let questionDictionary = trivia[indexOfSelectedQuestion]
+//        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
+//        let questionDictionary = trivia[indexOfSelectedQuestion]
+        
+        let questionProvider = QuestionProvider()
+        let questionDictionary = QuestionProvider.randomQuestion();
+        
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
     }
