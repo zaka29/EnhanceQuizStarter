@@ -15,10 +15,19 @@ struct QuestionProvider {
         ["Question": "All ducks are birds", "Answer": "True"]
     ]
     
-    func randomQuestion() -> [String: String] {
-        var indexOfSelectedQuestion = 0
+    var indexOfSelectedQuestion = 0
+    
+    mutating func randomQuestion() -> [String: String] {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
         let questionDictionary = trivia[indexOfSelectedQuestion]
         return questionDictionary
+    }
+    
+    func getSelectedIndex() -> Int {
+        return indexOfSelectedQuestion
+    }
+    
+    func getSelectedQuestionDict(selectedIndex index:Int) -> [String: String] {
+        return trivia[index]
     }
 }

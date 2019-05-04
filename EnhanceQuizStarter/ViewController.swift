@@ -13,20 +13,11 @@ import AudioToolbox
 class ViewController: UIViewController {
     
     // MARK: - Properties
-    
+    var questionProvider = QuestionProvider()
     let questionsPerRound = 4
     var questionsAsked = 0
     var correctQuestions = 0
-//    var indexOfSelectedQuestion = 0
-    
     var gameSound: SystemSoundID = 0
-    
-//    let trivia: [[String : String]] = [
-//        ["Question": "Only female koalas can whistle", "Answer": "False"],
-//        ["Question": "Blue whales are technically whales", "Answer": "True"],
-//        ["Question": "Camels are cannibalistic", "Answer": "False"],
-//        ["Question": "All ducks are birds", "Answer": "True"]
-//    ]
     
     // MARK: - Outlets
     
@@ -56,12 +47,7 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-//        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-//        let questionDictionary = trivia[indexOfSelectedQuestion]
-        
-        let questionProvider = QuestionProvider()
-        let questionDictionary = QuestionProvider.randomQuestion();
-        
+        let questionDictionary = questionProvider.randomQuestion()
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
     }
@@ -104,8 +90,8 @@ class ViewController: UIViewController {
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
-        
-        let selectedQuestionDict = trivia[indexOfSelectedQuestion]
+        let selectedQuestionIndex = questionProvider.getSelectedIndex()
+        let selectedQuestionDict = questionProvider.getSelectedQuestionDict(selectedIndex: selectedQuestionIndex)
         let correctAnswer = selectedQuestionDict["Answer"]
         
         if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
