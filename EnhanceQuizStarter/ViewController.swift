@@ -13,7 +13,8 @@ import AudioToolbox
 class ViewController: UIViewController {
     
     // MARK: - Properties
-    var questionProvider = QuestionProvider()
+    // new question instance here
+    let questionProvider = QuestionDataProvider()
     let questionsPerRound = 4
     var questionsAsked = 0
     var correctQuestions = 0
@@ -28,9 +29,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadGameStartSound()
         playGameStartSound()
+        // question.displayquestion();
         displayQuestion()
     }
     
@@ -46,8 +47,10 @@ class ViewController: UIViewController {
         AudioServicesPlaySystemSound(gameSound)
     }
     
+    // to refactor moved to question class
     func displayQuestion() {
         let questionDictionary = questionProvider.randomQuestion()
+        
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
     }
@@ -90,6 +93,7 @@ class ViewController: UIViewController {
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
+        // All this stuff refactored and moving to 
         let selectedQuestionIndex = questionProvider.getSelectedIndex()
         let selectedQuestionDict = questionProvider.getSelectedQuestionDict(selectedIndex: selectedQuestionIndex)
         let correctAnswer = selectedQuestionDict["Answer"]
@@ -114,7 +118,12 @@ class ViewController: UIViewController {
         correctQuestions = 0
         nextRound()
     }
-    
 
 }
 
+class Question {
+    
+    func displayQuestion() {
+        
+    }
+}
