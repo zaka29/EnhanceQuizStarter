@@ -14,11 +14,12 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     // new question instance here
-    let questionProvider = QuestionDataProvider()
+   
     let questionsPerRound = 4
     var questionsAsked = 0
-    var correctQuestions = 0
+    var allTriviaQuestions: [Question] = []
     var gameSound: SystemSoundID = 0
+    var currentQuestion: Question?
     
     // MARK: - Outlets
     
@@ -31,7 +32,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         loadGameStartSound()
         playGameStartSound()
-        // question.displayquestion();
         displayQuestion()
     }
     
@@ -49,9 +49,12 @@ class ViewController: UIViewController {
     
     // to refactor moved to question class
     func displayQuestion() {
-        let questionDictionary = questionProvider.randomQuestion()
-        
-        questionField.text = questionDictionary["Question"]
+        var questionProvider = QuestionDataProvider()
+        var questionDictionary = questionProvider.randomQuestion()
+        let question = Question(questionText: questionDictionary["Question"]!, questionAnswer: questionDictionary["Answer"]!)
+        self.allTriviaQuestions.append(question)
+        self.currentQuestion = question
+        questionField.text = question.getText()
         playAgainButton.isHidden = true
     }
     
@@ -63,7 +66,7 @@ class ViewController: UIViewController {
         // Display play again button
         playAgainButton.isHidden = false
         
-        questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        questionField.text = "Way \(getCorrectQuestitonsPerRound(allQuestions: allTriviaQuestions)) out of \(questionsPerRound) correct!"
     }
     
     func nextRound() {
@@ -88,23 +91,30 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
+    func getCorrectQuestitonsPerRound(allQuestions questions: [Question]) -> Int {
+        var correctQuestionsCounter: Int = 0
+        for question in questions {
+            if question.isAnsweredCorrect() {
+                correctQuestionsCounter += 1
+            }
+        }
+        return correctQuestionsCounter
+    }
     
+    // MARK: - Actions
     @IBAction func checkAnswer(_ sender: UIButton) {
-        // Increment the questions asked counter
-        questionsAsked += 1
-        // All this stuff refactored and moving to 
-        let selectedQuestionIndex = questionProvider.getSelectedIndex()
-        let selectedQuestionDict = questionProvider.getSelectedQuestionDict(selectedIndex: selectedQuestionIndex)
-        let correctAnswer = selectedQuestionDict["Answer"]
+        let senderTrue = sender === trueButton
+        let senderFalse = sender === falseButton
+        currentQuestion?.checkAnswer(sender, buttonTrue: senderTrue, buttonFalse: senderFalse)
         
-        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
-            correctQuestions += 1
-            questionField.text = "Correct!"
+        if currentQuestion?.isAnsweredCorrect() ?? false {
+            questionField.text = "Yay correct"
         } else {
-            questionField.text = "Sorry, wrong answer!"
+            questionField.text = "Nah, maybe next time"
         }
         
+        // Increment the questions asked counter
+        questionsAsked += 1
         loadNextRound(delay: 2)
     }
     
@@ -115,15 +125,10 @@ class ViewController: UIViewController {
         falseButton.isHidden = false
         
         questionsAsked = 0
-        correctQuestions = 0
+        allTriviaQuestions = []
         nextRound()
     }
 
 }
 
-class Question {
-    
-    func displayQuestion() {
-        
-    }
-}
+

@@ -14,6 +14,7 @@
 		972A72BB2056F06C0059EF4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 972A72B92056F06C0059EF4A /* LaunchScreen.storyboard */; };
 		972A72C32056F0E40059EF4A /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 972A72C22056F0E40059EF4A /* GameSound.wav */; };
 		9B191431227C321500A378BF /* QuestionDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B191430227C321500A378BF /* QuestionDataProvider.swift */; };
+		9B191433228192E600A378BF /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B191432228192E600A378BF /* Question.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		972A72BC2056F06C0059EF4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		972A72C22056F0E40059EF4A /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSound.wav; sourceTree = "<group>"; };
 		9B191430227C321500A378BF /* QuestionDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDataProvider.swift; sourceTree = "<group>"; };
+		9B191432228192E600A378BF /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,13 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				972A72B02056F06C0059EF4A /* AppDelegate.swift */,
+				9B191432228192E600A378BF /* Question.swift */,
 				972A72B22056F06C0059EF4A /* ViewController.swift */,
+				9B191430227C321500A378BF /* QuestionDataProvider.swift */,
 				972A72B42056F06C0059EF4A /* Main.storyboard */,
 				972A72B72056F06C0059EF4A /* Assets.xcassets */,
 				972A72B92056F06C0059EF4A /* LaunchScreen.storyboard */,
 				972A72BC2056F06C0059EF4A /* Info.plist */,
 				972A72C22056F0E40059EF4A /* GameSound.wav */,
-				9B191430227C321500A378BF /* QuestionDataProvider.swift */,
 			);
 			path = EnhanceQuizStarter;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				972A72B32056F06C0059EF4A /* ViewController.swift in Sources */,
+				9B191433228192E600A378BF /* Question.swift in Sources */,
 				9B191431227C321500A378BF /* QuestionDataProvider.swift in Sources */,
 				972A72B12056F06C0059EF4A /* AppDelegate.swift in Sources */,
 			);

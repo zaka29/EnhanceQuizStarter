@@ -47,7 +47,7 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="True"/>
                                 <connections>
-                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GmD-Ud-Emb"/>
+                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="20h-DC-yXA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eic-Nx-foS">
@@ -84,10 +84,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="falseButton" destination="qYh-2d-v8I" id="Kgl-kK-j1e"/>
+                        <outlet property="falseButton" destination="qYh-2d-v8I" id="xE6-Ol-hUk"/>
                         <outlet property="playAgainButton" destination="eic-Nx-foS" id="fZz-Md-Y70"/>
                         <outlet property="questionField" destination="dCF-BL-dDa" id="HIQ-UX-KNe"/>
-                        <outlet property="trueButton" destination="CSn-ih-qRR" id="kyC-6T-ixm"/>
+                        <outlet property="trueButton" destination="CSn-ih-qRR" id="wKI-xg-rRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
