@@ -9,12 +9,14 @@
 import UIKit
 
 class Question {
+    let answers: [String]
     let answer: String
     let text: String
     var correctAnswer: Bool
     
-    init(questionText text: String, questionAnswer answer: String) {
+    init(questionText text: String, questionAnswer answer: String, allPossibleAnswers answers: [String]) {
         self.text = text
+        self.answers = answers
         self.answer = answer
         self.correctAnswer = false
     }
@@ -23,8 +25,12 @@ class Question {
         return text
     }
     
-    func getAnswer() -> String {
+    func getCorrectAnswer() -> String {
         return answer
+    }
+    
+    func geAnswer(answerNumber index: Int) -> String {
+        return answers[index]
     }
     
     func isAnsweredCorrect() -> Bool {

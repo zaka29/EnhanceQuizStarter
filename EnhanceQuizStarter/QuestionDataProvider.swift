@@ -8,16 +8,28 @@
 import GameKit
 
 struct QuestionDataProvider {
-    let trivia: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
-        ["Question": "Blue whales are technically whales", "Answer": "True"],
-        ["Question": "Camels are cannibalistic", "Answer": "False"],
-        ["Question": "All ducks are birds", "Answer": "True"]
+    let trivia: [[String : Any]] = [
+        ["Question": "Only female koalas can whistle",
+         "Answers": ["One", "Two", "Three", "Four"],
+         "Answer": "Two"
+        ],
+        ["Question": "Blue whales are technically whales",
+         "Answers": ["One", "Two", "Three", "Four"],
+         "Answer": "Three"
+        ],
+        ["Question": "Camels are cannibalistic",
+         "Answers": ["One", "Two", "Three", "Four"],
+         "Answer": "Four"
+        ],
+        ["Question": "All ducks are birds",
+         "Answers": ["One", "Two", "Three", "Four"],
+         "Answer": "One"
+        ]
     ]
     
     var indexOfSelectedQuestion = 0
     
-    mutating func randomQuestion() -> [String: String] {
+    mutating func randomQuestion() -> [String: Any] {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
         let questionDictionary = trivia[indexOfSelectedQuestion]
         return questionDictionary
@@ -27,7 +39,7 @@ struct QuestionDataProvider {
         return indexOfSelectedQuestion
     }
     
-    func getSelectedQuestionDict(selectedIndex index:Int) -> [String: String] {
+    func getSelectedQuestionDict(selectedIndex index:Int) -> [String: Any] {
         return trivia[index]
     }
 }

@@ -24,10 +24,12 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var questionField: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
-
+    @IBOutlet weak var buttonAnswerFour: UIButton!
+    @IBOutlet weak var buttonAnswerThree: UIButton!
+    @IBOutlet weak var buttonAnswerTwo: UIButton!
+    @IBOutlet weak var buttonAnswerOne: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameStartSound()
@@ -51,17 +53,23 @@ class ViewController: UIViewController {
     func displayQuestion() {
         var questionProvider = QuestionDataProvider()
         var questionDictionary = questionProvider.randomQuestion()
-        let question = Question(questionText: questionDictionary["Question"]!, questionAnswer: questionDictionary["Answer"]!)
+        let question = Question(questionText: questionDictionary["Question"]! as! String, questionAnswer: questionDictionary["Answer"]! as! String, allPossibleAnswers: questionDictionary["Answers"] as! [String])
+        
         self.allTriviaQuestions.append(question)
         self.currentQuestion = question
+        
+        
         questionField.text = question.getText()
+        buttonAnswerOne.setTitle(question.geAnswer(answerNumber: 0), for: UIControl.State.normal)
         playAgainButton.isHidden = true
     }
     
     func displayScore() {
         // Hide the answer uttons
-        trueButton.isHidden = true
-        falseButton.isHidden = true
+        buttonAnswerOne.isHidden = true
+        buttonAnswerTwo.isHidden = true
+        buttonAnswerThree.isHidden = true
+        buttonAnswerFour.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
@@ -101,28 +109,36 @@ class ViewController: UIViewController {
         return correctQuestionsCounter
     }
     
+    
+    
     // MARK: - Actions
     @IBAction func checkAnswer(_ sender: UIButton) {
-        let senderTrue = sender === trueButton
-        let senderFalse = sender === falseButton
-        currentQuestion?.checkAnswer(sender, buttonTrue: senderTrue, buttonFalse: senderFalse)
         
-        if currentQuestion?.isAnsweredCorrect() ?? false {
-            questionField.text = "Yay correct"
-        } else {
-            questionField.text = "Nah, maybe next time"
-        }
+        print("test")
+//        let senderTrue = sender === trueButton
+//        let senderFalse = sender === falseButton
+        
+        
+//        currentQuestion?.checkAnswer(sender, buttonTrue: senderTrue, buttonFalse: senderFalse)
+//
+//        if currentQuestion?.isAnsweredCorrect() ?? false {
+//            questionField.text = "Yay correct"
+//        } else {
+//            questionField.text = "Nah, maybe next time"
+//        }
         
         // Increment the questions asked counter
-        questionsAsked += 1
-        loadNextRound(delay: 2)
+//        questionsAsked += 1
+//        loadNextRound(delay: 2)
     }
     
     
     @IBAction func playAgain(_ sender: UIButton) {
         // Show the answer buttons
-        trueButton.isHidden = false
-        falseButton.isHidden = false
+        buttonAnswerOne.isHidden = false
+        buttonAnswerTwo.isHidden = false
+        buttonAnswerThree.isHidden = false
+        buttonAnswerFour.isHidden = false
         
         questionsAsked = 0
         allTriviaQuestions = []
