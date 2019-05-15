@@ -109,12 +109,11 @@ class ViewController: UIViewController {
         return correctQuestionsCounter
     }
     
-    
-    
+   
     // MARK: - Actions
     @IBAction func checkAnswer(_ sender: UIButton) {
-        
-        print("test")
+        let button = sender as UIButton
+        print("test print action: button clicked - \(button.tag)")
 //        let senderTrue = sender === trueButton
 //        let senderFalse = sender === falseButton
         
