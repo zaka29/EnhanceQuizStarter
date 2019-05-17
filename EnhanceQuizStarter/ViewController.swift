@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonAnswerThree: UIButton!
     @IBOutlet weak var buttonAnswerTwo: UIButton!
     @IBOutlet weak var buttonAnswerOne: UIButton!
+    @IBOutlet weak var buttonNextQuestion: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,16 +59,16 @@ class ViewController: UIViewController {
         self.allTriviaQuestions.append(question)
         self.currentQuestion = question
         
-        
         questionField.text = question.getText()
+        questionField.textColor = UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         buttonAnswerOne.setTitle(question.geAnswer(answerNumber: 0), for: UIControl.State.normal)
         buttonAnswerTwo.setTitle(question.geAnswer(answerNumber: 1), for: UIControl.State.normal)
         buttonAnswerThree.setTitle(question.geAnswer(answerNumber: 2), for: UIControl.State.normal)
         buttonAnswerFour.setTitle(question.geAnswer(answerNumber: 3), for: UIControl.State.normal)
         
-        
         playAgainButton.isHidden = true
+        buttonNextQuestion.isHidden = true
     }
     
     func displayScore() {
@@ -79,8 +80,10 @@ class ViewController: UIViewController {
         
         // Display play again button
         playAgainButton.isHidden = false
+        buttonNextQuestion.isHidden = true
         
         questionField.text = "Way \(getCorrectQuestitonsPerRound(allQuestions: allTriviaQuestions)) out of \(questionsPerRound) correct!"
+        questionField.textColor = UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     func nextRound() {
@@ -114,7 +117,6 @@ class ViewController: UIViewController {
         }
         return correctQuestionsCounter
     }
-    
    
     // MARK: - Actions
     @IBAction func checkAnswer(_ sender: UIButton) {
@@ -125,15 +127,20 @@ class ViewController: UIViewController {
 
         if currentQuestion?.isAnsweredCorrect() ?? false {
             questionField.text = "Yay correct"
+            questionField.textColor = UIColor.init(red: 188/255, green: 244/255, blue: 66/255, alpha: 1.0)
         } else {
             questionField.text = "Nah, maybe next time"
+            questionField.textColor = UIColor.init(red: 244/255, green: 104/255, blue: 66/255, alpha: 1.0)
         }
         
-        // Increment the questions asked counter
-        questionsAsked += 1
-        loadNextRound(delay: 2)
+        buttonNextQuestion.isHidden = false
     }
     
+    @IBAction func goToNextQuestion(_ sender: UIButton) {
+        // Increment the questions asked counter
+        questionsAsked += 1
+        loadNextRound(delay: 0)
+    }
     
     @IBAction func playAgain(_ sender: UIButton) {
         // Show the answer buttons
@@ -148,5 +155,4 @@ class ViewController: UIViewController {
     }
 
 }
-
 

@@ -69,20 +69,6 @@
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qZr-ls-LX5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eic-Nx-foS">
-                                <rect key="frame" x="112.5" y="163" width="150" height="48"/>
-                                <color key="backgroundColor" red="0.0" green="0.57647058819999997" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="cHW-UJ-hGY"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="fnD-jC-7fq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Play Again"/>
-                                <connections>
-                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0DS-Q9-gCH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDg-gq-q4F">
                                 <rect key="frame" x="57" y="288" width="261" height="48"/>
                                 <color key="backgroundColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,6 +84,37 @@
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IBd-gG-NKi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eic-Nx-foS">
+                                <rect key="frame" x="112.5" y="163" width="150" height="48"/>
+                                <color key="backgroundColor" red="0.0" green="0.57647058819999997" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="cHW-UJ-hGY"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="fnD-jC-7fq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Play Again"/>
+                                <connections>
+                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0DS-Q9-gCH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svc-t9-VSQ">
+                                <rect key="frame" x="57" y="593" width="261" height="48"/>
+                                <color key="backgroundColor" red="0.37943425771434508" green="0.59330668546497467" blue="0.40919103282049346" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="GI1-97-nFV"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="261" id="bJw-ne-fHF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Next Question">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.31975064212328769" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="goToNextQuestion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZnD-Gb-kUM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.031372549020000001" green="0.16862745100000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -106,6 +123,8 @@
                             <constraint firstItem="J0Y-VQ-cwa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5mZ-ee-VJ5"/>
                             <constraint firstItem="J0Y-VQ-cwa" firstAttribute="top" secondItem="Zrs-6n-QEd" secondAttribute="bottom" constant="30" id="7pQ-Wo-ksU"/>
                             <constraint firstItem="dCF-BL-dDa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fya-7I-WRq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="svc-t9-VSQ" secondAttribute="bottom" constant="26" id="Np6-CR-shR"/>
+                            <constraint firstItem="svc-t9-VSQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O8c-u3-SKf"/>
                             <constraint firstItem="dCF-BL-dDa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R9d-zf-76K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qYh-2d-v8I" secondAttribute="bottom" constant="97" id="U6F-0F-CkN"/>
                             <constraint firstItem="wDg-gq-q4F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UEh-Kd-Ddd"/>
@@ -126,6 +145,7 @@
                         <outlet property="buttonAnswerOne" destination="qYh-2d-v8I" id="QtG-db-DYk"/>
                         <outlet property="buttonAnswerThree" destination="Zrs-6n-QEd" id="2ah-bb-gaQ"/>
                         <outlet property="buttonAnswerTwo" destination="J0Y-VQ-cwa" id="ORR-GV-H16"/>
+                        <outlet property="buttonNextQuestion" destination="svc-t9-VSQ" id="D4w-1D-vHJ"/>
                         <outlet property="playAgainButton" destination="eic-Nx-foS" id="fZz-Md-Y70"/>
                         <outlet property="questionField" destination="dCF-BL-dDa" id="HIQ-UX-KNe"/>
                     </connections>
