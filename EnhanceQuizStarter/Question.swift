@@ -37,12 +37,18 @@ class Question {
         return correctAnswer
     }
     
-    func checkAnswer(_ sender: UIButton, buttonTrue senderTrue: Bool, buttonFalse senderFalse: Bool) {
+    func checkAnswer(buttonPressed tag: Int) {
         
-        if (senderTrue && answer == "True") || (senderFalse && answer == "False") {
+        if (answers[tag] == answer) {
             self.correctAnswer = true
         } else {
             self.correctAnswer = false
         }
+        
+//        if (senderTrue && answer == "True") || (senderFalse && answer == "False") {
+//            self.correctAnswer = true
+//        } else {
+//            self.correctAnswer = false
+//        }
     }
 }

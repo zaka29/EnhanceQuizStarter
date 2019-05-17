@@ -14,16 +14,16 @@ struct QuestionDataProvider {
          "Answer": "Two"
         ],
         ["Question": "Blue whales are technically whales",
-         "Answers": ["One", "Two", "Three", "Four"],
-         "Answer": "Three"
+         "Answers": ["Five", "Six", "Seven", "Eight"],
+         "Answer": "Six"
         ],
         ["Question": "Camels are cannibalistic",
-         "Answers": ["One", "Two", "Three", "Four"],
-         "Answer": "Four"
+         "Answers": ["Nine", "Ten", "Eleven", "Twelve"],
+         "Answer": "Eleven"
         ],
         ["Question": "All ducks are birds",
-         "Answers": ["One", "Two", "Three", "Four"],
-         "Answer": "One"
+         "Answers": ["Thirteen", "Fourteen", "Fifteen", "Sixteen"],
+         "Answer": "Thirteen"
         ]
     ]
     

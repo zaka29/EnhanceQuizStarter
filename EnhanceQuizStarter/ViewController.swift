@@ -60,7 +60,13 @@ class ViewController: UIViewController {
         
         
         questionField.text = question.getText()
+        
         buttonAnswerOne.setTitle(question.geAnswer(answerNumber: 0), for: UIControl.State.normal)
+        buttonAnswerTwo.setTitle(question.geAnswer(answerNumber: 1), for: UIControl.State.normal)
+        buttonAnswerThree.setTitle(question.geAnswer(answerNumber: 2), for: UIControl.State.normal)
+        buttonAnswerFour.setTitle(question.geAnswer(answerNumber: 3), for: UIControl.State.normal)
+        
+        
         playAgainButton.isHidden = true
     }
     
@@ -114,21 +120,18 @@ class ViewController: UIViewController {
     @IBAction func checkAnswer(_ sender: UIButton) {
         let button = sender as UIButton
         print("test print action: button clicked - \(button.tag)")
-//        let senderTrue = sender === trueButton
-//        let senderFalse = sender === falseButton
         
-        
-//        currentQuestion?.checkAnswer(sender, buttonTrue: senderTrue, buttonFalse: senderFalse)
-//
-//        if currentQuestion?.isAnsweredCorrect() ?? false {
-//            questionField.text = "Yay correct"
-//        } else {
-//            questionField.text = "Nah, maybe next time"
-//        }
+        currentQuestion?.checkAnswer(buttonPressed: button.tag)
+
+        if currentQuestion?.isAnsweredCorrect() ?? false {
+            questionField.text = "Yay correct"
+        } else {
+            questionField.text = "Nah, maybe next time"
+        }
         
         // Increment the questions asked counter
-//        questionsAsked += 1
-//        loadNextRound(delay: 2)
+        questionsAsked += 1
+        loadNextRound(delay: 2)
     }
     
     
