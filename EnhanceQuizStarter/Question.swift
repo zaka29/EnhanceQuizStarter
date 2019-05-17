@@ -38,17 +38,16 @@ class Question {
     }
     
     func checkAnswer(buttonPressed tag: Int) {
-        
         if (answers[tag] == answer) {
             self.correctAnswer = true
         } else {
             self.correctAnswer = false
         }
         
-//        if (senderTrue && answer == "True") || (senderFalse && answer == "False") {
-//            self.correctAnswer = true
-//        } else {
-//            self.correctAnswer = false
-//        }
+    }
+    
+    func getCorrectButtonTag() -> Int {
+        return self.answers.firstIndex(of: self.answer)!
     }
 }
+
