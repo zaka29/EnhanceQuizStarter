@@ -46,7 +46,7 @@ class Question {
         
     }
     
-    func getCorrectButtonTag() -> Int {
+    func getCorrectAnswerButtonIndex() -> Int {
         return self.answers.firstIndex(of: self.answer)!
     }
 }

@@ -13,8 +13,6 @@ import AudioToolbox
 class ViewController: UIViewController {
     
     // MARK: - Properties
-    // new question instance here
-   
     let questionsPerRound = 4
     var questionsAsked = 0
     var allTriviaQuestions: [Question] = []
@@ -50,11 +48,11 @@ class ViewController: UIViewController {
         AudioServicesPlaySystemSound(gameSound)
     }
     
-    // to refactor moved to question class
     func displayQuestion() {
         var questionProvider = QuestionDataProvider()
         var questionDictionary = questionProvider.randomQuestion()
         let question = Question(questionText: questionDictionary["Question"]! as! String, questionAnswer: questionDictionary["Answer"]! as! String, allPossibleAnswers: questionDictionary["Answers"] as! [String])
+        let hilighted = UIColor.white
         
         self.allTriviaQuestions.append(question)
         self.currentQuestion = question
@@ -66,6 +64,11 @@ class ViewController: UIViewController {
         buttonAnswerTwo.setTitle(question.geAnswer(answerNumber: 1), for: .normal)
         buttonAnswerThree.setTitle(question.geAnswer(answerNumber: 2), for: .normal)
         buttonAnswerFour.setTitle(question.geAnswer(answerNumber: 3), for: .normal)
+        
+        buttonAnswerOne.setTitleColor(hilighted, for: .normal)
+        buttonAnswerTwo.setTitleColor(hilighted, for: .normal)
+        buttonAnswerThree.setTitleColor(hilighted, for: .normal)
+        buttonAnswerFour.setTitleColor(hilighted, for: .normal)
         
         playAgainButton.isHidden = true
         buttonNextQuestion.isHidden = true
@@ -117,6 +120,25 @@ class ViewController: UIViewController {
         }
         return correctQuestionsCounter
     }
+    
+    func highlightCorrectAnswerButton(buttonTag tag: Int) {
+        let hilighted = UIColor.white
+        let grayed = UIColor.init(red: 166/255, green: 168/255, blue: 167/255, alpha: 1.0)
+        let buttonsMap:  [Int: UIButton] = [
+            0: buttonAnswerOne,
+            1: buttonAnswerTwo,
+            2: buttonAnswerThree,
+            3: buttonAnswerFour,
+            ]
+        
+        for (index, button) in buttonsMap {
+            if (index == tag) {
+                button.setTitleColor(hilighted, for: .normal)
+            } else {
+                button.setTitleColor(grayed, for: .normal)
+            }
+        }
+    }
    
     // MARK: - Actions
     @IBAction func checkAnswer(_ sender: UIButton) {
@@ -128,13 +150,16 @@ class ViewController: UIViewController {
         if currentQuestion?.isAnsweredCorrect() ?? false {
             questionField.text = "Yay correct"
             questionField.textColor = UIColor.init(red: 188/255, green: 244/255, blue: 66/255, alpha: 1.0)
+            highlightCorrectAnswerButton(buttonTag: button.tag)
         } else {
             questionField.text = "Nah, maybe next time"
             questionField.textColor = UIColor.init(red: 244/255, green: 104/255, blue: 66/255, alpha: 1.0)
+            let correctButtonTag = currentQuestion?.getCorrectAnswerButtonIndex()
+            highlightCorrectAnswerButton(buttonTag: correctButtonTag!)
         }
         
         buttonNextQuestion.isHidden = false
-        highlightCorrectAnswerButton(buttonTag: button.tag)
+        
     }
     
     @IBAction func goToNextQuestion(_ sender: UIButton) {
@@ -153,25 +178,6 @@ class ViewController: UIViewController {
         questionsAsked = 0
         allTriviaQuestions = []
         nextRound()
-    }
-    
-    func highlightCorrectAnswerButton(buttonTag tag: Int) {
-        let hilighted = UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        let grayed = UIColor.init(red: 166/255, green: 168/255, blue: 167/255, alpha: 1.0)
-        let buttonsMap:  [Int: UIButton] = [
-            0: buttonAnswerOne,
-            1: buttonAnswerTwo,
-            2: buttonAnswerThree,
-            3: buttonAnswerFour,
-        ]
-        
-        for (index, button) in buttonsMap {
-            if (index == tag) {
-                button.setTitleColor(hilighted, for: .normal)
-            } else {
-                button.setTitleColor(grayed, for: .normal)
-            }
-        }
     }
 
 }
