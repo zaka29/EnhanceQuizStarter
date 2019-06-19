@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     let questionsPerRound = 4
+    var questionsTextAsked: [String] = []
     var questionsAsked = 0
     var allTriviaQuestions: [Question] = []
     var gameSound: SystemSoundID = 0
@@ -51,7 +52,16 @@ class ViewController: UIViewController {
     func displayQuestion() {
         var questionProvider = QuestionDataProvider()
         var questionDictionary = questionProvider.randomQuestion()
+        
+        if questionsTextAsked.contains(questionDictionary["Question"] as! String){
+            while questionsTextAsked.contains(questionDictionary["Question"] as! String) {
+                questionDictionary = questionProvider.randomQuestion()
+            }
+        }
+        
         let question = Question(questionText: questionDictionary["Question"]! as! String, questionAnswer: questionDictionary["Answer"]! as! String, allPossibleAnswers: questionDictionary["Answers"] as! [String])
+        
+        
         let hilighted = UIColor.white
         
         self.allTriviaQuestions.append(question)
@@ -143,8 +153,6 @@ class ViewController: UIViewController {
     // MARK: - Actions
     @IBAction func checkAnswer(_ sender: UIButton) {
         let button = sender as UIButton
-        print("test print action: button clicked - \(button.tag)")
-        
         currentQuestion?.checkAnswer(buttonPressed: button.tag)
 
         if currentQuestion?.isAnsweredCorrect() ?? false {
@@ -165,6 +173,7 @@ class ViewController: UIViewController {
     @IBAction func goToNextQuestion(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
+        questionsTextAsked.append((currentQuestion?.text)!)
         loadNextRound(delay: 0)
     }
     
@@ -176,6 +185,7 @@ class ViewController: UIViewController {
         buttonAnswerFour.isHidden = false
         
         questionsAsked = 0
+        questionsTextAsked = []
         allTriviaQuestions = []
         nextRound()
     }
