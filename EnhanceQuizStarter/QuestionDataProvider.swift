@@ -9,24 +9,24 @@ import GameKit
 
 struct QuestionDataProvider {
     let trivia: [[String : Any]] = [
-        ["Question": "Only female koalas can whistle",
-         "Answers": ["One", "Two", "Three", "Four"],
-         "Answer": "Two",
+        ["Question": "Only female koalas can whistle?",
+         "Answers": ["Yes", "No", "Males, only when eucalyptus drunk", "Only when staring at a male"],
+         "Answer": "No",
          "id": 0
         ],
-        ["Question": "Blue whales are technically whales",
-         "Answers": ["Five", "Six", "Seven", "Eight"],
-         "Answer": "Six",
+        ["Question": "Blue whales are technically whales?",
+         "Answers": ["Yes", "No", "Just whales by day", "Noo, giant fishes"],
+         "Answer": "Yes",
          "id": 1
         ],
-        ["Question": "Camels are cannibalistic",
-         "Answers": ["Nine", "Ten", "Eleven", "Twelve"],
-         "Answer": "Eleven",
+        ["Question": "Camels are cannibalistic?",
+         "Answers": ["Yes", "No", "Only zombie camels", "Camels are vegan"],
+         "Answer": "No",
          "id": 2
         ],
-        ["Question": "All ducks are birds",
-         "Answers": ["Thirteen", "Fourteen", "Fifteen", "Sixteen"],
-         "Answer": "Thirteen",
+        ["Question": "All ducks are birds?",
+         "Answers": ["Yes", "No", "Some ducks are birds", "Quack quack"],
+         "Answer": "Yes",
          "id": 3
         ],
         ["Question": "Are dogs colour blind?",
@@ -34,7 +34,7 @@ struct QuestionDataProvider {
          "Answer": "No",
          "id": 4
         ],
-        ["Question": "Will the alpacas spit at your face if get annoyed, and rip your limbs off",
+        ["Question": "Will the alpacas spit at your face if get annoyed?",
          "Answers": ["Yeh, just like lamas", "Nah, never", "Most likely goes for a bite", "Will make clicking noise"],
          "Answer": "Yeh, just like lamas",
          "id": 5
