@@ -29,7 +29,7 @@ class Question {
         return answer
     }
     
-    func geAnswer(answerNumber index: Int) -> String {
+    func getAnswer(answerNumber index: Int) -> String {
         return answers[index]
     }
     

@@ -70,10 +70,10 @@ class ViewController: UIViewController {
         questionField.text = question.getText()
         questionField.textColor = UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
-        buttonAnswerOne.setTitle(question.geAnswer(answerNumber: 0), for: .normal)
-        buttonAnswerTwo.setTitle(question.geAnswer(answerNumber: 1), for: .normal)
-        buttonAnswerThree.setTitle(question.geAnswer(answerNumber: 2), for: .normal)
-        buttonAnswerFour.setTitle(question.geAnswer(answerNumber: 3), for: .normal)
+        buttonAnswerOne.setTitle(question.getAnswer(answerNumber: 0), for: .normal)
+        buttonAnswerTwo.setTitle(question.getAnswer(answerNumber: 1), for: .normal)
+        buttonAnswerThree.setTitle(question.getAnswer(answerNumber: 2), for: .normal)
+        buttonAnswerFour.setTitle(question.getAnswer(answerNumber: 3), for: .normal)
         
         buttonAnswerOne.setTitleColor(hilighted, for: .normal)
         buttonAnswerTwo.setTitleColor(hilighted, for: .normal)
